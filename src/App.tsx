@@ -25,14 +25,12 @@ function App() {
   const [referencePosition, updateReferencePosition] = useState([-4,4,4])
 
   console.log("start of function ")
-
-
   function createStyleArray(index: number){
     var array: CSS.Properties[] = []
     var unSelectedStyle: CSS.Properties = {borderColor: "#0a0a0a", marginRight:0, marginLeft: 0, borderWidth: "medium", borderStyle: "dashed", width: "144pt", height: "144pt"}
     var selectedStyle: CSS.Properties = {borderColor: "white", marginRight:0, marginLeft: 0, borderWidth: "medium", borderStyle: "dashed", width: "144pt", height: "144pt"}
-    var referenceStyle: CSS.Properties = {width: "266pt", height: "266pt" }
-    var yourShapeStyle: CSS.Properties = {width: "266pt", height: "266pt", border: "white", borderStyle: "dashed"}
+    var referenceStyle: CSS.Properties = {width: "228pt", height: "228pt" }
+    var yourShapeStyle: CSS.Properties = {width: "228pt", height: "228pt", border: "white", borderStyle: "dashed"}
     if (isMobile){
       console.log("mobile first run")
       referenceStyle.width = "108pt"
@@ -197,14 +195,13 @@ function App() {
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', background: "#0a0a0a" }}>
         <Container fluid>
         
-        <h2 style={{marginBottom:0, flex: 1, flexDirection: "row", textAlign: "right"}}>{shapesLeft}</h2>
+        <h2 style={{marginTop:0, flex: 1, flexDirection: "row", textAlign: "right"}}>{shapesLeft}</h2>
 
-          <Row style={{marginTop: "6pt"}}>
+          <Row style={{marginTop: 0}}>
             {/* //REFERENCE SHAPE */}
             {/*shape 0*/}
-            <Col>
-              <h3>Match this Shape</h3>
-              <div></div>
+            <Col style={{marginTop: 0}}>
+              <h3 style={{marginTop: 0}}>Match this Shape</h3>
               <Canvas mode={"concurrent"} shadows style={stylesArray[0]} camera={{ position: [referencePosition[0], referencePosition[1], referencePosition[2]] }} >
                 <color attach="background" args={["black"]} />
                 <ambientLight intensity={1} />
@@ -219,8 +216,7 @@ function App() {
             <Col style={{ marginLeft: "-24pt" }}>
               <div>
                 <CustomConfetti />
-
-                <h3>{clickOrTap}</h3>
+                <h3 style={{marginTop: 0}}>{clickOrTap}</h3>
                 {selectedCanvas}
                   <button  style={{ fontSize: "18pt" }} 
                   onClick={() => {updateCheckCount(checkCount + 1)}}>Check</button>
@@ -283,7 +279,7 @@ function App() {
       width = 144
     }
     else{
-      width = 355
+      width = 336
     }
     console.log("width is " + width)
     return (
@@ -413,8 +409,8 @@ function App() {
       mouseOrTouch = "Touch the shape to rotate it."
     }
     return (
-      <div style={{ width: "368pt" }}>
-        <h2>Welcome to the Shape Rotation game!</h2>
+      <div style={{ width: "368pt"}}>
+        <h2 >Welcome to the Shape Rotation game!</h2>
         <p>Choose the correct shape, and rotate it such that it matches the reference shape. You will be given 3 Shapes.
           {mouseOrTouch}</p>
         <h3>You are scored by time.</h3>
