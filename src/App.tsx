@@ -161,7 +161,25 @@ function App() {
   }
   else{
 
+    var clickOrTap: string = "Click and drag to rotate 🖱"
+    if (isMobile){
+      clickOrTap = "Touch to rotate 👇"
+    }
+    var tryAgainStyle: CSS.Properties = {visibility: "hidden", marginBottom: 0, marginTop: 0}
 
+    var tryAgainMessage: string = "Try Again!"
+    var visibilityOfTryAgain = showConfetti.show
+    if (visibilityOfTryAgain === true){
+      if (showConfetti.colors[0] === "#FF0000"){
+        tryAgainStyle = {visibility: "visible", color: "#FF0000", marginBottom: 0, marginTop: 0}
+        tryAgainMessage = "Try Again!"
+      }
+      else{
+        console.log(showConfetti.colors, "fck fuck fuck")
+        tryAgainStyle = {visibility: "visible", color: "#00FFFF", marginBottom: 0, marginTop: 0}
+        tryAgainMessage = "Correct!"
+      }
+    }
     var selectedCanvas = <Canvas shadows camera={{ position: [4,4,4] }} style={stylesArray[1]} >
         <color attach="background" args={["black"]} />
         <ambientLight intensity={1} />
@@ -170,15 +188,22 @@ function App() {
         <GetCameraInfo referenceShape={false} />
       </Canvas>
 
+    var gamesLeft:number = 3 - gamesPlayed
+    var shapesLeft:string = gamesLeft + " shapes remaining"
+    if (gamesLeft === 1){
+      shapesLeft = gamesLeft +  " shape remaining"
+    }
     return (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', background: "#0a0a0a" }}>
-
         <Container fluid>
-          <Row>
+        
+        <h2 style={{marginBottom:0, flex: 1, flexDirection: "row", textAlign: "right"}}>{shapesLeft}</h2>
+
+          <Row style={{marginTop: "6pt"}}>
             {/* //REFERENCE SHAPE */}
             {/*shape 0*/}
             <Col>
-              <h3>Match This Shape</h3>
+              <h3>Match this Shape</h3>
               <div></div>
               <Canvas mode={"concurrent"} shadows style={stylesArray[0]} camera={{ position: [referencePosition[0], referencePosition[1], referencePosition[2]] }} >
                 <color attach="background" args={["black"]} />
@@ -195,11 +220,11 @@ function App() {
               <div>
                 <CustomConfetti />
 
-                <h3>With Your Shape</h3>
+                <h3>{clickOrTap}</h3>
                 {selectedCanvas}
                   <button  style={{ fontSize: "18pt" }} 
-                  onClick={() => {updateCheckCount(checkCount + 1)}}>Check
-                  </button>
+                  onClick={() => {updateCheckCount(checkCount + 1)}}>Check</button>
+                  <p style={tryAgainStyle}>{tryAgainMessage}</p>
               </div>
             </Col>
           </Row>
@@ -303,7 +328,7 @@ function App() {
         if (shapesArray[0] === shapesArray[1]){
           console.log("user coords", x,y,z)
           console.log("reference coords ", referencePosition[0], referencePosition[1], referencePosition[2])
-          if (diff < 3){
+          if (diff < 5){
   
             console.log("diff is small")
   
@@ -390,8 +415,7 @@ function App() {
     return (
       <div style={{ width: "368pt" }}>
         <h2>Welcome to the Shape Rotation game!</h2>
-        <p>Choose the correct shape, and rotate it such that it matches the reference shape.
-          You will be given 3 Shapes.
+        <p>Choose the correct shape, and rotate it such that it matches the reference shape. You will be given 3 Shapes.
           {mouseOrTouch}</p>
         <h3>You are scored by time.</h3>
         <h3>Good Luck!</h3>
