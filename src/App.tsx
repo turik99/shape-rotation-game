@@ -8,8 +8,6 @@ import {isMobile} from 'react-device-detect';
 import Confetti from 'react-confetti';
 
 import './App.css';
-import { Vector3 } from 'three';
-import { unstable_batchedUpdates } from 'react-dom';
 function App() {
 
 
