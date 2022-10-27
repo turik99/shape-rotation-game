@@ -1,5 +1,5 @@
-###The Shape Rotation Game
-
+**The Shape Rotation Game
+**
 This is a web project  made with ThreeJS, ThreeFiber and React/TypeScript.
 The object of the Shape Rotation Game is to choose the correct shape from a given set of 4, and match its orienation with the object shape.
 
