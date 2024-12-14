@@ -5,4 +5,4 @@ The object of the Shape Rotation Game is to choose the correct shape from a give
 
 I wrote this game after seeing "shape rotation skill" become a viral trend on tech Twitter. It took 3 days of frantic, 12 hour a day coding to build, but the minimal Twitter clout I gained from posting made it all worth it :)
 
-You can play it at https://rotate-game.herokuapp.com/ - Or just clone this repo and execute "npm start" to run it locally.
+You can play it at [https://rotate-game.herokuapp.com/](https://shape-rotation-game.vercel.app/) - Or just clone this repo and run "npm install", then "npm run start" to run it locally.
